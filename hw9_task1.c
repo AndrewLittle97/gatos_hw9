@@ -15,15 +15,30 @@
 #include <stdlib.h>
 
 /* Function Prototypes */
-
+void Usage(char *argv[]);
+void ReadFile(char *fName, float num[]);
+FILE *OpenCheckFile(char *fName);
+void WriteFile(FILE *sFile, float num[]);
 /* Main Program */
 int main(int argc, char *argv[])
 {
+	if((argc != 3 || strcmp(argv[2], "--help") == 0))
+	{
+		Usage(argv);
+	}
+	else
+	{
+
+	}
 
 	return 0;
 }
 
 
 /* Function Defenitions */
-
+void Usage(char *argv[])
+{
+	printf("Usage ./hw9_task1 <dataFile> <outFileName>\n");
+	return;
+}
 
