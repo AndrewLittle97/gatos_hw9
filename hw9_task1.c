@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-
+	
 	}
 
 	return 0;
@@ -42,3 +42,9 @@ void Usage(char *argv[])
 	return;
 }
 
+void ReadFile(char *fName, float num[])
+{
+	FILE* file;
+	file = fopen(fName, "r");
+
+}
