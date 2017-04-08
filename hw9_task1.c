@@ -13,6 +13,7 @@
  */
 #include <stdio.h>		/* For Standard I/O */
 #include <stdlib.h>
+#include <string.h>
 
 /* Function Prototypes */
 void Usage(char *argv[]);
@@ -22,13 +23,20 @@ void WriteFile(FILE *sFile, float num[]);
 /* Main Program */
 int main(int argc, char *argv[])
 {
-	if((argc != 3 || strcmp(argv[2], "--help") == 0))
+	if((argc != 3 || strcmp(argv[1], "--help") == 0))
 	{
 		Usage(argv);
 	}
 	else
 	{
-	
+		float numbers[100];
+		ReadFile(argv[1], numbers);
+		FILE* file = OpenCheckFile(argv[2]);
+		if(file != NULL)
+		{
+			WriteFile(file, numbers);
+		}
+		
 	}
 
 	return 0;
@@ -45,6 +53,36 @@ void Usage(char *argv[])
 void ReadFile(char *fName, float num[])
 {
 	FILE* file;
+	int idx = 0; 
 	file = fopen(fName, "r");
+	while(! feof(file))
+	{
+		fscanf(file, "%f\n", &num[idx]);
+		idx++;
+	}
+}
 
+void WriteFile(FILE *sFile, float num[])
+{
+	for( int i = 0; i < 12; i++)
+	{
+		fprintf(sFile, "%1.4f\n", num[i]);
+	}
+}
+
+FILE *OpenCheckFile(char *fName)
+{
+	FILE *fp= fopen(fName, "r");
+	if(fp != NULL)
+	{
+		fclose (fp);
+		printf("Do you want to overwrite?\n");
+		char choice;
+		scanf("%c", &choice);
+		if(choice == 'Y')
+		{
+			return fopen(fName, "w");
+		}
+	}
+	return NULL;
 }
