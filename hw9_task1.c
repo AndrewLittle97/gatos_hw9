@@ -76,11 +76,15 @@ FILE *OpenCheckFile(char *fName)
 	if(fp != NULL)
 	{
 		fclose (fp);
-		printf("Do you want to overwrite?\n");
+		printf("The txt file pointsIn.txt was successfully read.\n");
+		printf("A file by the name pointsOut.txt exists.\n");
+		printf("Do you want to continue and  overwrite it?\n");
+		printf("For yes type Y, for no type N.\n");
 		char choice;
 		scanf("%c", &choice);
 		if(choice == 'Y')
 		{
+			printf("The file pointsOut.txt has successfully been written as a txt file.\n");
 			return fopen(fName, "w");
 		}
 	}
