@@ -17,6 +17,7 @@
 
 /* Function Prototypes */
 
+FILE *FileRead(char *zone1.txt);
 /* Main Program */
 int main(int argc, char *argv[])
 {
@@ -36,7 +37,7 @@ int main(int argc, char *argv[])
 
 
 /* Function Defenitions */
-FILE *FileRead(char *zone1.txt);
+FILE *FileRead(char *zone1.txt)
 {
 	 FILE *inFile;
 
